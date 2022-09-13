@@ -1,15 +1,15 @@
-import { createRouter, createWebHashHistory } from "vue-router";
-import { router as loginRouter } from "./login";
-import { router as homeRouter } from "./home";
+import {createRouter, createWebHashHistory} from "vue-router";
+import {router as loginRouter} from "./login";
+import {router as homeRouter} from "./home";
 import Home from "/src/views/Home.vue";
-import { router as userManageRouter } from "./home";
+import {router as visitorRouter} from "./visitor";
 
 export const routes = [
     {
         path: '/user',
         name: 'user',
         component: Home,
-        meta: { title: '个人中心', icon: 'el-icon-shopping-cart-full' },
+        meta: {title: '个人中心', icon: 'el-icon-shopping-cart-full'},
         children: [
             {
                 path: '/user',
@@ -24,6 +24,7 @@ export const routes = [
     },
     loginRouter,
     homeRouter,
+    visitorRouter,
     {
         path: '/403',
         name: '403',
@@ -46,7 +47,7 @@ export const routes = [
     {
         path: "/:catchAll(.*)", // 不识别的path自动匹配404
         redirect: '/404',
-        meta: { hidden: true }
+        meta: {hidden: true}
     }
 
 ];
