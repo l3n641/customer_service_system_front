@@ -97,6 +97,9 @@
             <el-form-item label="最后访问">
               {{ currentVisitor.visitor.last_login_at }}
             </el-form-item>
+            <el-form-item label="访问站点">
+              {{ currentVisitor.visitor.domain }}
+            </el-form-item>
             <el-form-item label="黑名单">
               <el-switch
                   v-model="currentVisitor.visitor.status"
