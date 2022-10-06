@@ -6,26 +6,29 @@
         </el-tab-pane>
         <el-tab-pane label="在线用户" name="1">
         </el-tab-pane>
-        <el-row v-for="item in visitorList" :key="item.visitor.visitor_id" class="visitorListBg">
-          <div
-              style="cursor:pointer"
-              class="onlineUsers"
-              v-bind:class="{'cur': item.visitor.visitor_id===currentGuest }"
-              @click="changeVisitor(item.visitor.visitor_id)"
-          >
+        <el-scrollbar height="750px">
+          <el-row v-for="item in visitorList" :key="item.visitor.visitor_id" class="visitorListBg">
+            <div
+                style="cursor:pointer"
+                class="onlineUsers"
+                v-bind:class="{'cur': item.visitor.visitor_id===currentGuest }"
+                @click="changeVisitor(item.visitor.visitor_id)"
+            >
 
-            <el-col :span="12">
-              <el-avatar v-bind:class="{'imgGray': item.visitor.is_online==0 }" :size="40"
-                         :src="item.visitor.avatar"></el-avatar>
+              <el-col :span="8">
+                <el-avatar v-bind:class="{'imgGray': item.visitor.is_online==0 }" :size="40"
+                           :src="item.visitor.avatar"></el-avatar>
 
-              <el-badge :value="item.unreadQuantity" class="item" v-if="item.unreadQuantity>0"></el-badge>
-            </el-col>
+                <el-badge :value="item.unreadQuantity" class="item" v-if="item.unreadQuantity>0"></el-badge>
+              </el-col>
 
-            <el-col :span="10" :offset="1">
-              {{ item.visitor.source_ip }} {{ item.visitor.area }}
-            </el-col>
-          </div>
-        </el-row>
+              <el-col :span="15" :offset="1">
+                {{ item.visitor.source_ip }} {{ item.visitor.area }}
+              </el-col>
+            </div>
+          </el-row>
+        </el-scrollbar>
+
       </el-tabs>
 
 
