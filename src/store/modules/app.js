@@ -1,7 +1,8 @@
-import { routes } from "@/router";
+import router from "@/router";
 
 const getSidebarItems = () => {
     let items = []
+    const routes = router.getRoutes()
     for (let route of routes) {
         let item = null
         if (!route.children) {
@@ -62,6 +63,19 @@ const state = {
 const actions = {}
 
 const mutations = {
+    addRoute: (state, data) => {
+        for (const item of data) {
+            router.addRoute(item)
+        }
+        router.addRoute({
+                path: "/:catchAll(.*)", // 不识别的path自动匹配404
+                redirect: '/404',
+                meta: {hidden: true}
+            }
+        )
+        state.sidebarItems = getSidebarItems()
+
+    },
     delTagsItem: (state, data) => {
         state
             .tagsList

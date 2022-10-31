@@ -33,9 +33,10 @@
 </template>
 
 <script>
-import { computed } from "vue";
-import { useStore } from "vuex";
-import { useRoute } from "vue-router";
+import {computed} from "vue";
+import {useStore} from "vuex";
+import {useRoute} from "vue-router";
+import {ref, onMounted} from 'vue'
 
 export default {
   setup() {
@@ -44,10 +45,15 @@ export default {
     const onRoutes = computed(() => {
       return route.path
     });
+    const items = ref([])
 
     const store = useStore()
     const collapse = computed(() => store.getters.collapse)
-    let items = store.getters.sidebarItems
+
+    onMounted(() => {
+      items.value = store.getters.sidebarItems
+
+    })
     return {
       items,
       onRoutes,

@@ -2,7 +2,6 @@ import {createRouter, createWebHashHistory} from "vue-router";
 import {router as loginRouter} from "./login";
 import {router as homeRouter} from "./home";
 import Home from "/src/views/Home.vue";
-import {router as visitorRouter} from "./visitor";
 
 export const routes = [
     {
@@ -24,7 +23,6 @@ export const routes = [
     },
     loginRouter,
     homeRouter,
-    visitorRouter,
     {
         path: '/403',
         name: '403',
@@ -44,11 +42,7 @@ export const routes = [
         },
         component: () => import (/* webpackChunkName: "404" */ '@/views/404.vue')
     },
-    {
-        path: "/:catchAll(.*)", // 不识别的path自动匹配404
-        redirect: '/404',
-        meta: {hidden: true}
-    }
+
 
 ];
 
