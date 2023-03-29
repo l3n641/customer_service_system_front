@@ -82,6 +82,9 @@
               label-width="100px"
               v-if="currentVisitor.visitor"
           >
+            <el-form-item label="email">
+              {{ currentVisitor.visitor.email }}
+            </el-form-item>
             <el-form-item label="ID">
               {{ currentVisitor.visitor.visitor_id }}
             </el-form-item>
